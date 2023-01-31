@@ -1,0 +1,496 @@
+<MyScreenManager>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+# Home screen
+    Screen:
+        name: 'home'
+        FloatLayout:
+            SquareButton:
+                pos_hint: {'center_x':.25, 'center_y':.75}
+                source: 'icons/256x256pngFiles/Mouse/mouseTransparent.png'
+                on_release:
+                    app.root.current = 'mouse'
+                    app.root.transition.direction = 'left'
+            SquareButton:
+                pos_hint: {'center_x':.75, 'center_y':.75}
+                source: 'icons/256x256pngFiles/Keyboard/keyboardTransparent.png'
+                on_release:
+                    app.root.current = 'keyboard'
+                    app.root.transition.direction = 'left'
+            SquareButton:
+                pos_hint: {'center_x':.5, 'center_y':.25}
+                source: 'icons/256x256pngFiles/Power/powerButtonTransparent.png'
+                on_release:
+                    app.root.current = 'symbols'
+                    app.root.transition.direction = 'left'
+
+
+# Mouse screen
+    Screen:
+        name: 'mouse'
+        MyScrollView:
+            GridLayout:
+                cols: 2
+                rows: 2
+                Button:
+                    text: 'Mouse Shapes'
+                    on_release:
+                        app.root.current = 'mouse shapes'
+                        app.root.transition.direction = 'left'
+                Button:
+                    text: 'Mouse Actions'
+                    on_release:
+                        app.root.current = 'mouse actions'
+                        app.root.transition.direction = 'left'
+        Toolbar:
+        BackButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+        HomeButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+
+    Screen:
+        name: 'mouse shapes'
+        MyScrollView:
+            Accordion:
+                orientation: 'vertical'
+                size_hint_y: 1.3
+                AccordionItem:
+                    title: 'Standard Pointer'
+                    Image:
+                        source: 'icons/mousePointers/standardPointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Standard Pointer:[/b] The mouse pointer is the standard pointer by default, when it is not hovering over anything interactive.'
+                AccordionItem:
+                    title: 'Text Pointer'
+                    Image:
+                        source: 'icons/mousePointers/textPointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Text Pointer:[/b] The mouse pointer will change to a text pointer when it is hovering over text.'
+                AccordionItem:
+                    title: 'Busy Pointer'
+                    Image:
+                        source: 'icons/mousePointers/busyPointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Busy Pointer:[/b] The mouse pointer will change to a busy pointer when the computer is running a process in the background.'
+                AccordionItem:
+                    title: 'Link Pointer'
+                    Image:
+                        source: 'icons/mousePointers/linkPointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Link Pointer:[/b] The mouse pointer will change to a link pointer when it is hovering over a link or clickable object.'
+                AccordionItem:
+                    title: 'Resize Pointer'
+                    Image:
+                        source: 'icons/mousePointers/resizePointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Resize Pointer:[/b] The mouse pointer will change to a resize pointer when it is hovering over the edge of a resizable object like a window, image, or table. You can resize something diagonally, horizontally, or vertically.'
+                AccordionItem:
+                    title: 'Unavailable Pointer'
+                    Image:
+                        source: 'icons/mousePointers/unavailablePointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Unavailable Pointer:[/b] The mouse pointer will change to an unavailable pointer when it is hovering over something that is not available.'
+                AccordionItem:
+                    title: 'Move Pointer'
+                    Image:
+                        source: 'icons/mousePointers/movePointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Move Pointer:[/b] The mouse pointer will change to a move pointer when it is hovering over something that can be moved and placed elsewhere.'
+                AccordionItem:
+                    title: 'Precision Pointer'
+                    Image:
+                        source: 'icons/mousePointers/precisionPointer.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Precision Pointer:[/b] The mouse pointer will change to a precision pointer when it is hovering over a painting surface.'
+                AccordionItem:
+                    background_normal: ''
+                    background_selected: ''
+        Toolbar:
+        BackButton:
+            on_release:
+                app.root.current = 'mouse'
+                app.root.transition.direction = 'right'
+        HomeButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+
+    Screen:
+        name: 'mouse actions'
+        MyScrollView:
+            Accordion:
+                orientation: 'vertical'
+                size_hint_y: 1.2
+                AccordionItem:
+                    title: 'Left Mouse Button'
+                    Image:
+                        source: 'icons/256x256pngFiles/Mouse/Clicked/transparentNoCircle/mouseLeftClickTransparentNoCircle.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Left mouse button:[/b] This button is used to select objects. Press down on the left mouse button once to click on something. Press down on the left mouse button twice in one second to double click. Press the left mouse button down and drag the cursor across something to highlight it. In some cases like when editing a Word document, you can move objects by clicking on them and dragging them.'
+                AccordionItem:
+                    title: 'Right Mouse Button'
+                    Image:
+                        source: 'icons/256x256pngFiles/Mouse/Clicked/transparentNoCircle/mouseRightClickTransparentNoCircle.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Right mouse button:[/b] This button is used to open a context menu. This menu provides options related to whatever was right clicked.'
+                AccordionItem:
+                    title: 'Middle Mouse Wheel'
+                    Image:
+                        source: 'icons/256x256pngFiles/Mouse/Clicked/transparentNoCircle/mouseMiddleClickTransparentNoCircle.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Middle mouse wheel:[/b] This wheel allows you to scroll through the page you are on without clicking the scroll bar. Clicking it can also allow you to close a tab.'
+                AccordionItem:
+                    background_normal: ''
+                    background_selected: ''
+        Toolbar:
+        BackButton:
+            on_release:
+                app.root.current = 'mouse'
+                app.root.transition.direction = 'right'
+        HomeButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+
+# Keyboard screen
+    Screen:
+        name: 'keyboard'
+        MyScrollView:
+            GridLayout:
+                cols: 2
+                rows: 2
+                Button:
+                    text: 'Keyboard Shortcuts'
+                    on_release:
+                        app.root.current = 'keyboard shortcuts'
+                        app.root.transition.direction = 'left'
+                Button:
+                    text: 'Keyboard Functions'
+                    on_release:
+                        app.root.current = 'keyboard functions'
+                        app.root.transition.direction = 'left'
+        Toolbar:
+        BackButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+        HomeButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+
+    Screen:
+        name: 'keyboard shortcuts'
+        MyScrollView:
+            Accordion:
+                orientation: 'vertical'
+                size_hint_y: 2
+                AccordionItem:
+                    title: 'Copy'
+                    Image:
+                        source: 'icons/keyCombos/ctrlC.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + C: Copy[/b] This shortcut will copy whatever text is highlighted, and store it in a clipboard.'
+                AccordionItem:
+                    title: 'Cut'
+                    Image:
+                        source: 'icons/keyCombos/ctrlX.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + X: Cut[/b] This shortcut will copy the highlighted text, then delete the text. The text will be stored in the clipboard.'
+                AccordionItem:
+                    title: 'Paste'
+                    Image:
+                        source: 'icons/keyCombos/ctrlV.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + V: Paste[/b] This shortcut will take text that you have copied into the clipboard and insert it wherever your cursor is.'
+                AccordionItem:
+                    title: 'Save'
+                    Image:
+                        source: 'icons/keyCombos/ctrlS.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + S: Save[/b] This shortcut will save something. The thing being saved varies based on the program you are in. It can be a Word document, a web page, a drawing, etc.'
+                AccordionItem:
+                    title: 'Open'
+                    Image:
+                        source: 'icons/keyCombos/ctrlO.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + O: Open[/b] This shortcut will bring up a File Explorer so you can open a program.'
+                AccordionItem:
+                    title: 'New'
+                    Image:
+                        source: 'icons/keyCombos/ctrlN.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + N: New[/b] This shortcut will open a new thing. The new thing varies based on the program you are in. It can be a Word document, a web page, a drawing, etc.'
+                AccordionItem:
+                    title: 'Undo'
+                    Image:
+                        source: 'icons/keyCombos/ctrlZ.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + Z: Undo[/b] This shortcut will reverse an action that you have done.'
+                AccordionItem:
+                    title: 'Select All'
+                    Image:
+                        source: 'icons/keyCombos/ctrlA.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + A: Select All[/b] This shortcut will highlight everything on the page that can be highlighted.'
+                AccordionItem:
+                    title: 'Italicize'
+                    Image:
+                        source: 'icons/keyCombos/ctrlI.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + I: Italicize[/b] This shortcut will [i]italicize[/i] highlighted text.'
+                AccordionItem:
+                    title: 'Bold'
+                    Image:
+                        source: 'icons/keyCombos/ctrlB.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + B: Bold[/b] This shortcut will [b]embolden[/b] highlighted text.'
+                AccordionItem:
+                    title: 'Underline'
+                    Image:
+                        source: 'icons/keyCombos/ctrlU.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + U: Underline[/b] This shortcut will [u]underline[/u] highlighted text.'
+                AccordionItem:
+                    title: 'Jump Next'
+                    Image:
+                        source: 'icons/keyCombos/ctrlRightArrow.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + Right Arrow: Jump Next[/b] This shortcut will move the cursor to the start of the next word.'
+                AccordionItem:
+                    title: 'Jump Previous'
+                    Image:
+                        source: 'icons/keyCombos/ctrlLeftArrow.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + Left Arrow: Jump Previous[/b] This shortcut will move the cursor to the start of the previous word.'
+                AccordionItem:
+                    title: 'Jump Down'
+                    Image:
+                        source: 'icons/keyCombos/ctrlDownArrow.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + Down Arrow: Jump Down[/b] - This shortcut will move the cursor to the start of the next paragraph.'
+                AccordionItem:
+                    title: 'Jump Up'
+                    Image:
+                        source: 'icons/keyCombos/ctrlUpArrow.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl + Up Arrow: Jump Up[/b] - This shortcut will move the cursor to the start of the previous paragraph.'
+                AccordionItem:
+                    title: 'Task View'
+                    Image:
+                        source: 'icons/keyCombos/winTab.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Windows logo key + Tab: Open Task View[/b] - This shortcut will present all running tasks to you.'
+                AccordionItem:
+                    title: 'Display'
+                    Image:
+                        source: 'icons/keyCombos/winD.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Windows logo key + D: Display and hide desktop[/b] - This shortcut will either display or hide the desktop depending on which is currently visible.'
+                AccordionItem:
+                    title: 'Switch'
+                    Image:
+                        source: 'icons/keyCombos/altTab.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Alt + Tab: Switch between open apps[/b] - This shortcut will allow you to switch between apps in a list. Press Tab again to cycle through apps.'
+                AccordionItem:
+                    title: 'Quick Link Menu'
+                    Image:
+                        source: 'icons/keyCombos/winX.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Windows logo key + X: Open the Quick Link menu[/b] - This shortcut will bring up a menu with quick links to many useful programs in Windows.'
+                AccordionItem:
+                    title: 'Lock'
+                    Image:
+                        source: 'icons/keyCombos/winL.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Windows logo key + L: Lock your PC[/b] - This shortcut will quickly lock your PC while keeping everything running.'
+                AccordionItem:
+                    background_normal: ''
+                    background_selected: ''
+        Toolbar:
+        BackButton:
+            on_release:
+                app.root.current = 'keyboard'
+                app.root.transition.direction = 'right'
+        HomeButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+
+    Screen:
+        name: 'keyboard functions'
+        MyScrollView:
+            Accordion:
+                orientation: 'vertical'
+                size_hint_y: 2
+                AccordionItem:
+                    title: 'Tab'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/tabKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Tab:[/b] Move between items or move forward 5 characters (depending on the task).'
+                AccordionItem:
+                    title: 'Shift'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/shiftKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Shift:[/b] When the Shift key is pressed at the same time as a letter key, an upper case version of that letter is produced. For other non-letter keys, this action produces the character that is above the main character on the key.'
+                AccordionItem:
+                    title: 'Alt Gr'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/altGrKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Alt Gr:[/b] Used on international keyboards to access special characters on keys where there are more than two characters on the key. Press it down at the same time as the letter/character key to produce the special character shown on the bottom right side of the key.'
+                AccordionItem:
+                    title: 'Ctrl'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/controlKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Ctrl:[/b] Holding down the Ctrl key while selecting items allows you to select several items at once. The Ctrl key is also used in many keyboard shortcuts.'
+                AccordionItem:
+                    title: 'Scroll Lock'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/scrollLockKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Scroll Lock:[/b] In the past, when Scroll Lock was selected, pressing the arrow keys resulted in scrolling through a page of text rather than moving the cursor line by line. These days, the functionality has been replaced by the on-screen scroll bar, so the Scroll Lock key is almost never used and most recent applications do not recognize it.'
+                AccordionItem:
+                    title: 'Insert'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/insertKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Insert: [/b] Pressing this key switches between two modes when you are typing. In the first mode, what you type appears before the cursor and pushes any text that comes after it to the right. In the second mode, any text that you type successively replaces any text that is to the right of the cursor.'
+                AccordionItem:
+                    title: 'Num Lock'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/numLockKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Num Lock:[/b] When the Num Lock key is pressed, the numbers on the number pad of the keyboard are activated. When the Num Lock key is not pressed, the arrows and special keys on the number pad are active. The number pad is a block of numbers that looks like an upside down telephone keypad. On some keyboards it is found on the right side of the keyboard. On others, it shares spots with the 7, 8, 9, U, I, O, J, K, L, and M keys.'
+                AccordionItem:
+                    title: 'Caps Lock'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/capsLockKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Caps Lock:[/b] When you press the Caps Lock key, you activate a feature that lets you type upper case letters continuously without having to press the Shift key at the same time. To go back to typing lower case letters, press the Caps Lock key again. You should use Caps Lock instead of shift if you want to type more than one or two upper case letters in a row. Numbers and special keys are not affected by the Caps Lock key.'
+                AccordionItem:
+                    title: 'Print Screen'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/printScreenKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Print Screen:[/b] pressing the Print Screen key captures an image of your entire screen.'
+                AccordionItem:
+                    background_normal: ''
+                    background_selected: ''
+        Toolbar:
+        BackButton:
+            on_release:
+                app.root.current = 'keyboard'
+                app.root.transition.direction = 'right'
+        HomeButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+
+# Symbol screen
+    Screen:
+        name: 'symbols'
+        MyScrollView:
+            Accordion:
+                orientation: 'vertical'
+                size_hint_y: 1
+                AccordionItem:
+                    title: 'Power'
+                    Image:
+                        source: 'icons/symbols/powerSymbol.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Power Symbol:[/b] This symbol represents a small circle with a vertical line. It is said to have originated when the term ‘On and Off’ got replaced by the binary system (0’s and 1’s), for which 1 represented power and 0 represented it being off.'
+                AccordionItem:
+                    title: 'Windows'
+                    Image:
+                        source: 'icons/256x256pngFiles/Keys/CommandAndModifiers/windowsKey.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Windows:[/b] Clicking this symbol provides shortcuts from the Start menu! You can also press the Windows key to pop up the same menu. Pressing this key with another key may result in shortcuts activating. (Example: Windows key + M minimizes everything open!)'
+                AccordionItem:
+                    title: 'Wi-Fi'
+                    Image:
+                        source: 'icons/symbols/wifiSymbol.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Wi-Fi:[/b] This widely universal symbol signals that there is available wireless internet access around the user. The level of it being filled showcases the strength of the internet connection, with 1 bar being filled to all 3 being filled, meaning the connection is strong.'
+                AccordionItem:
+                    title: 'Battery'
+                    Image:
+                        source: 'icons/symbols/batterySymbol.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Battery:[/b] This icon shows how much power you have left on your device. It also shows you whether your computer is plugged in or not.'
+                AccordionItem:
+                    title: 'Sound'
+                    Image:
+                        source: 'icons/symbols/soundSymbol.png'
+                    AccordionLabel:
+                        text_size: self.width, None
+                        text: '[b]Sound:[/b] Speaker/Sound Symbol: This symbol signifies that the computer is broadcasting sound. Just how the Wi-Fi bars can fill differently, so can the sound to show how the volume level is. When the speaker has an ‘X’ next to it, it means the sound is muted or sound is off.'
+                AccordionItem:
+                    background_normal: ''
+                    background_selected: ''
+        Toolbar:
+        BackButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
+        HomeButton:
+            on_release:
+                app.root.current = 'home'
+                app.root.transition.direction = 'right'
