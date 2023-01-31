@@ -1,2 +1,2 @@
 # tooltip-app
-My IT Capstone project.
+A simple app that displays information about basic Windows features.
